@@ -73,13 +73,15 @@ def load_data(city, month, day):
     
     if month.lower() != 'all':
         months = ['january', 'february', 'march', 'april', 'may', 'june']
-        month_num = months.index(month.lower()) + 1
-        df = df[df['month'] ==  month_num]
+        #month_num = months.index(month.lower()) + 1
+        #df = df[df['month'] ==  month_num]
+        df = df[df['month'] ==  months.index(month.lower()) + 1]
 
     if day.lower() != 'all':
         days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
-        day_num = days.index(day.lower())
-        df = df[df['day_of_week'] == day_num]
+        #day_num = days.index(day.lower())
+        #df = df[df['day_of_week'] == day_num]
+        df = df[df['day_of_week'] == days.index(day.lower())]
     
     return df
 
@@ -94,22 +96,25 @@ def time_stats(df):
     if 'month' not in df.columns:
         df['month'] = df['Start Time'].dt.month
         
-    popular_month = df['month'].value_counts().first_valid_index()
+    #popular_month = df['month'].value_counts().first_valid_index()
     months = ['January', 'February', 'March', 'April', 'May', 'June']
-    popular_month = months[popular_month - 1]
+    #popular_month = months[popular_month - 1]
+    popular_month = months[df['month'].value_counts().first_valid_index() - 1]
     
     # display the most common day of week
     if 'day_of_week' not in df.columns:
         df['day_of_week'] = df['Start Time'].dt.dayofweek
         
-    popular_day = df['day_of_week'].value_counts().first_valid_index()
+    #popular_day = df['day_of_week'].value_counts().first_valid_index()
     days = ['Mondays', 'Tuesdays', 'Wednesdays', 'Thursdays', 'Fridays', 'Saturdays', 'Sundays']
-    popular_day = days[popular_day]
+    #popular_day = days[popular_day]
+    popular_day = days[df['day_of_week'].value_counts().first_valid_index()]
     
     # display the most common start hour
     df['hour'] = df['Start Time'].dt.hour
-    popular_hour = df['hour'].value_counts().first_valid_index()
-    h = datetime.timedelta(hours = int(popular_hour))
+    #popular_hour = df['hour'].value_counts().first_valid_index()
+    #h = datetime.timedelta(hours = int(popular_hour))
+    h = datetime.timedelta(hours = int(df['hour'].value_counts().first_valid_index()))
 
     print('Most popular month to ride a bike is {}.\nMost popular day of the week to ride a bike is {}.\nThe most popular hour to a ride a bike is {}.'.format(popular_month, popular_day, h))
 
