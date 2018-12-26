@@ -15,13 +15,13 @@ The code does several things:
 * Displays raw data upon user input 5 rows at a time
 
 ### Files used
-The files used for this project includes:
-**Python files:**
-bikeshare.py
-**CSV files (BikeShare Data):**
-washington.csv
-new_york_city.csv
-chicago.csv
+The files used for this project includes:  
+**Python files:**  
+* bikeshare.py  
+**CSV files (BikeShare Data):**  
+* washington.csv  
+* new_york_city.csv  
+* chicago.csv  
 
 ### Credits
 The Udacity crew for the class to introductory data science.
