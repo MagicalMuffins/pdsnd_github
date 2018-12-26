@@ -2,7 +2,7 @@
 This project was created December 26th, 2018.
 
 ### Project Title
-Bikeshare ride and rider statistics
+_**Bikeshare Ride and Rider Statistics**_
 
 ### Description
 The project aims to examine the statistics of the bike rental in the city of Chicago, New York City, and Washington during the months of January to June, 2017.
